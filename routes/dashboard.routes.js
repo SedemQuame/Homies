@@ -18,8 +18,10 @@ module.exports = app => {
         );
 
     app.route('/dashboard')
-        .get((req, res) => {
-            res.render(__dirname + './../views/dashboard.views.ejs');
-            res.json({ msg: 'dashboard_view' });
-        });
+        .get(dashboard.getUser);
+
+    // (req, res) => {
+    //     res.render(__dirname + './../views/dashboard.views.ejs');
+    //     res.json({ msg: 'dashboard_view' });
+    // }
 };

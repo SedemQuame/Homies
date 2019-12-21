@@ -2,19 +2,55 @@
     <%- include('./partials/nav.ejs');-%>
         <!-- signup portion -->
 
+        <header class="header">
+            <div class="container">
 
-        <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card mb-4 shadow-sm">
-                <img class="bd-placeholder-img" src="" alt="">
-                <div class="card-body ">
-                    <p class="card-text ">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <div class="d-flex justify-content-between align-items-center ">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Image -->
+                        <img class="persons_picture" src="<%- data.profile_url %>" alt="Kamal">
+                        <h2 class="text-center"><strong><%- data.name %></strong></h2>
+                    </div>
 
+                    <div class="col-md-8 row">
+                        <div class="col-7">
+                            <p class="field_data">Age:
+                                <%- data.age %>
+                            </p>
+                            <p class="field_data">Race:
+                                <%- data.race %>
+                            </p>
+                            <p class="field_data">Gender:
+                                <%- data.gender %>
+                            </p>
+                            <p class="field_data">Phone:
+                                <%- data.phone_number %>
+                            </p>
+                            <p class="field_data">Email:
+                                <%- data.email_address %>
+                            </p>
+                        </div>
+
+                        <div class="col-5">
+
+                            <p class="field_data">Special Skills:
+                                <%- data.special_skills %>
+                            </p>
+                            <p class="field_data">Medical History:
+                                <%- data.medical_history %>
+                            </p>
+                            <p class="field_data">Residence:
+                                <%- data.residence %>
+                            </p>
+                        </div>
 
                     </div>
                 </div>
+
             </div>
-        </div>
+        </header>
+        <!--End of Header-->
+
 
 
         <%- include('./partials/footer'); -%>
