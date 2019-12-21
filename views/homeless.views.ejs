@@ -118,19 +118,21 @@
                     </form>
 
                     <% for(let i = colls.length-1; i > -1 ; i--) {%>
-                        <div class="commentbox row">
-                            <div class="col-2">
-                                <p>
-                                    <%- colls[i].senderId %>
-                                </p>
+                        <% if(user_id == colls[i].recepientId) { %>
+                            <div class="commentbox row">
+                                <div class="col-2">
+                                    <p>
+                                        <%- colls[i].senderId %>
+                                    </p>
+                                </div>
+                                <div class="col-10">
+                                    <p>
+                                        <%- colls[i].comment %>
+                                    </p>
+                                </div>
                             </div>
-                            <div class="col-10">
-                                <p>
-                                    <%- colls[i].comment %>
-                                </p>
-                            </div>
-                        </div>
-                        <% } %>
+                            <%}%>
+                                <% } %>
 
                 </div>
             </div>

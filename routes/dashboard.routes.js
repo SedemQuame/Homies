@@ -5,19 +5,11 @@ module.exports = app => {
 
     //========================================== app users routes ============================================//
     app.route('/get_all_users')
-        .get(
-            // res.json({ msg: 'trying to get all user data' });
-            dashboard.getAllUsers);
+        .get(dashboard.getAllUsers);
 
     app.route('/get_user/:user_id')
-        .get(
-            dashboard.getSingleUser
-            // (req, res) => {
-            // res.render(__dirname + './../views/dashboard.views.ejs');
-            // res.json({ msg: 'getting a single user\'s data' });}
-        );
+        .get(dashboard.getSingleUser);
 
-    app.route('/dashboard/:my_id')
+    app.route('/dashboard/')
         .get(dashboard.getUser);
-
 };

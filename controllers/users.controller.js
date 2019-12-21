@@ -4,44 +4,30 @@ require('dotenv').config({ path: __dirname + './../.env' });
 //====================================== requiring modules ===========================================//
 // node modules
 const bcrypt = require('bcrypt');
-// const passport = require('passport');
-// const formidable = require('formidable');
 const fs = require('fs');
-
-
 
 // custom models
 const user = require('../models/users.models');
-
-// use static authenticate method of model in LocalStrategy
-// passport.use(user.createStrategy());
-
-// passport.serializeUser(user.serializeUser());
-// passport.deserializeUser(user.deserializeUser());
-
 const SALT_ROUNDS = 12;
+
+let sess;
+let storedPath, path;
 
 //================================== creating HTTP handler methods ==================================//
 // create new user
 exports.createUser = (req, res) => {
     const image = req.files.profile_url;
+    path = __dirname + '/../public/img/' + image.name;
+    storedPath = '/img/' + image.name;
 
-    console.log(image);
+    // Starting session.
+    sess = req.session;
 
-    const path = __dirname + '/../public/img/' + image.name;
-    const storedPath = '/img/' + image.name;
+    // storing user email and name in sessions.
+    sess.useremail = req.body.emailAddress;
+    sess.username = req.body.name;
 
-    image.mv(path, (error) => {
-        if (error) {
-            console.error(error);
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ status: 'error', message: error }));
-            return;
-        }
-
-        // res.writeHead(200, { 'Content-Type': 'application/json' });
-        // res.end(JSON.stringify({ status: 'success', path: '/images/' + image.name }));
-
+    image.mv(path, () => {
         bcrypt.hash(req.body.password, SALT_ROUNDS, function(err, hash) {
             // Store hash in your password DB.
             user.create({
@@ -60,17 +46,10 @@ exports.createUser = (req, res) => {
                 optional_message: req.body.optionalMessage,
                 profile_url: storedPath
             }).then(() => {
-                console.log('spinning user account ... 🥱🥱🥱');
                 console.log('user account created ... 😎😎😎');
-                console.log('redirecting user .../');
-                res.redirect('/dashboard/5dfda881f5c24a0004b727b8');
-                // res.json({ result: 'success' });
+                res.redirect('/dashboard/');
             }).catch((err) => {
-                console.log('spinning user account ... 🥱🥱🥱');
                 console.log('user not created ... 😪🙄😣');
-                console.log('redirecting user .../');
-                console.log(err);
-                // res.json({ result: 'failure' });
                 res.redirect('/user_signup');
             });
         });
@@ -89,12 +68,10 @@ exports.login = (req, res) => {
                 console.log('redirecting user .../');
                 console.log('account found ... 😎😎😎');
                 res.redirect('/dashboard');
-                res.json({ msg: 'login successful' });
             } else {
                 console.log('account not found ... 🥱🥱🥱');
                 console.log('redirecting user .../');
                 res.redirect('/user_login');
-                // res.json({ msg: 'login failed' });
             }
         });
     }).catch((err) => {
