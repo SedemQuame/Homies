@@ -63,7 +63,7 @@ exports.createUser = (req, res) => {
                 console.log('spinning user account ... 🥱🥱🥱');
                 console.log('user account created ... 😎😎😎');
                 console.log('redirecting user .../');
-                res.redirect('/dashboard');
+                res.redirect('/dashboard/5dfda881f5c24a0004b727b8');
                 // res.json({ result: 'success' });
             }).catch((err) => {
                 console.log('spinning user account ... 🥱🥱🥱');

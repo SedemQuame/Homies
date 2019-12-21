@@ -17,7 +17,7 @@ module.exports = app => {
             // res.json({ msg: 'getting a single user\'s data' });}
         );
 
-    app.route('/dashboard')
+    app.route('/dashboard/:my_id')
         .get(dashboard.getUser);
 
     // (req, res) => {
