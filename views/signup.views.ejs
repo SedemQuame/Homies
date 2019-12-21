@@ -1,0 +1,68 @@
+<%- include('./partials/header.ejs');-%>
+    <%- include('./partials/nav.ejs');-%>
+        <!-- signup portion -->
+        <div class="container">
+
+            <div class="row" id="signup_container">
+                <div class="col-12 offset-md-3 col-md-6 offset-md-3 login_or_sign_container">
+                    <h1 class="text-center">Sign Up</h1>
+                    <p class="text-center">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                    <!-- sign up forms -->
+                    <form action="/signup" method="POST" enctype="multipart/form-data">
+                        <div class="form-group"><label for="">Name</label><input type="text" class="form-control" name="name" required></div>
+
+                        <div class="row">
+                            <div class="form-group col-6"><label for="">Email address</label><input type="text" class="form-control" name="emailAddress"></div>
+                            <div class="form-group col-6"><label for="">Phone number</label><input type="text" class="form-control" name="phoneNumber"></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-6"><label for="">Age</label><input type="text" class="form-control" name="age" required></div>
+                            <div class="form-group col-6"><label for="">Gender</label><input type="text" class="form-control" name="gender" required></div>
+                        </div>
+
+                        <div class="form-group"><label for="">Race</label>
+                            <input type="text" class="form-control" name="race" required>
+                        </div>
+                        <div class="form-group"><label for="">Current Residence</label><input type="text" class="form-control" name="residence" required></div>
+
+                        <div class="form-group"><label for="">Special Skills (if any)</label><input type="text" class="form-control" name="specialSkills"></div>
+
+                        <div class="form-group"><label for="">Medical History</label><input type="text" class="form-control" name="medHistory"></div>
+
+                        <div class="row">
+                            <div class="form-group col-6"><label for="">Password</label><input type="password" class="form-control" name="password" required></div>
+                            <div class="form-group col-6"><label for="">Confirm password</label><input type="password" class="form-control" required></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Optional Message</label>
+                            <textarea class="form-control" name="optionalMessage" id="" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="form-group"><input type="file" name="profile_url" id=""></div>
+
+                        <div class="form-group">
+                            <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
+                        </div>
+
+                    </form>
+                    <!-- show login button -->
+                    <p class="text-center">
+                        <a class="" href="/user_login">
+                               Already got an account? <br> Login
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="container">
+            <hr>
+        </div>
+
+        <%- include('./partials/footer'); -%>

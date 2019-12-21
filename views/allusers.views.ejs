@@ -1,0 +1,44 @@
+<%- include('./partials/header.ejs');-%>
+    <%- include('./partials/nav.ejs');-%>
+        <!-- signup portion -->
+
+        <!-- <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="card">
+                        <img src="img/avatar.png" class="card-img-top avatar_img" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"> &lt; user_name &gt; </h5>
+                            <p class="card-text"> &lt; description &gt; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                            <a href="/get_user:1" class="btn btn-outline-dark btn-block">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> -->
+
+        <div class="container">
+            <div class="row">
+                <%for(let i=0; i < list.length; i++) {%>
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <div class="card">
+                            <img src="<%- list[i].profile_url %>" class="card-img-top avatar_img" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%- list[i].name %>
+                                </h5>
+                                <p class="card-text">
+                                    <%-  list[i].optional_message %>
+                                </p>
+                                <a href="/get_user/<%- list[i]._id %>" class="btn btn-outline-dark btn-block">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+
+
+        <%- include('./partials/footer'); -%>
