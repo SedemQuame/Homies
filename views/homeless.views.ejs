@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="col-md-8 row">
-                        <div class="col-7">
+                        <div class="col-6">
                             <p class="field_data">Age:
                                 <%- data.age %>
                             </p>
@@ -29,7 +29,7 @@
                             </p>
                         </div>
 
-                        <div class="col-5">
+                        <div class="col-4">
 
                             <p class="field_data">Special Skills:
                                 <%- data.special_skills %>
@@ -40,6 +40,10 @@
                             <p class="field_data">Residence:
                                 <%- data.residence %>
                             </p>
+                        </div>
+
+                        <div class="col-2">
+                            <a class="btn btn-outline-dark" href="/pledges">Pledges <span class="badge badge-dark">4</span></a>
                         </div>
 
                     </div>
@@ -66,7 +70,7 @@
 
                 <div class="user_data_field col-md-12">
                     <h2 class="card-title">Progression Report</h2>
-                    <p>none</p>
+                    <p># handler hasn't written a progress report yet.</p>
                 </div>
 
             </div>
@@ -81,7 +85,7 @@
                         <%- data.name %> by pledging resources to help
                             <%- data.name %> grow.
                     </p>
-                    <a class="btn btn-block btn-outline-dark" href="#">Help Out</a>
+                    <a class="btn btn-block btn-outline-dark" href="/help_out">Help Out</a>
                 </div>
 
                 <div class="col-12 col-md-6">
@@ -113,14 +117,14 @@
                         </div>
                     </form>
 
-                    <% for(let i = colls.length-1; i > 0 ; i--) {%>
+                    <% for(let i = colls.length-1; i > -1 ; i--) {%>
                         <div class="commentbox row">
                             <div class="col-2">
                                 <p>
                                     <%- colls[i].senderId %>
                                 </p>
                             </div>
-                            <div class="col-2">
+                            <div class="col-10">
                                 <p>
                                     <%- colls[i].comment %>
                                 </p>

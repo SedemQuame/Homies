@@ -1,0 +1,33 @@
+<%- include('./partials/header.ejs');-%>
+    <%- include('./partials/nav.ejs');-%>
+
+        <div id="donation_form" class="container">
+            <div class="row">
+                <div class="offset-2 col-8 offset-2 ">
+                    <h1>Donation Page</h1>
+                    <p>Fill this form to pledge a donation to the given person. <br> Which will be fulfilled at a later date. </p>
+                </div>
+                <form class="offset-2 col-8 offset-2 " action="/pledge" method="POST">
+                    <div class="form-group">
+                        <label for="">Donor name</label>
+                        <input class="form-control" type="text" name="" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Amount / Action</label>
+                        <input class="form-control" type="text" name="" id="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Fulfillment date</label>
+                        <input class="form-control" type="date" name="" id="">
+                    </div>
+
+                    <div class="form-gropu">
+                        <input class="btn btn-outline-dark" type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <%- include('./partials/footer'); -%>
