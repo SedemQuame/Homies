@@ -6,6 +6,8 @@ require('dotenv').config({ path: __dirname + './../.env' });
 
 // custom models
 const users = require('../models/users.models');
+const comment = require('../models/comments.models');
+
 
 exports.getAllUsers = (req, res) => {
     users.find().then(docs => {
@@ -22,7 +24,9 @@ exports.getSingleUser = (req, res) => {
     console.log(req.params.user_id);
     users.findById(req.params.user_id).then(docs => {
         // console.log(docs);
-        res.render(__dirname + './../views/homeless.views.ejs', { data: docs });
+        comment.find().then(com => {
+            res.render(__dirname + './../views/homeless.views.ejs', { data: docs, colls: com });
+        });
     }).catch(err => {
         res.json({ error: err });
     });

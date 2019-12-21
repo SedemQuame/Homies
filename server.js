@@ -33,6 +33,7 @@ app.use(express.static(__dirname + '/public'));
 require('./routes/users.routes')(app);
 require('./routes/views.routes')(app);
 require('./routes/dashboard.routes')(app);
+require('./routes/comments.routes')(app);
 
 
 // define a simple route

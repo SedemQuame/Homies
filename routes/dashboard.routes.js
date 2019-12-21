@@ -20,8 +20,4 @@ module.exports = app => {
     app.route('/dashboard/:my_id')
         .get(dashboard.getUser);
 
-    // (req, res) => {
-    //     res.render(__dirname + './../views/dashboard.views.ejs');
-    //     res.json({ msg: 'dashboard_view' });
-    // }
 };

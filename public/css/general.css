@@ -62,3 +62,12 @@ p {
     max-height: 200px;
     min-height: 200px;
 }
+
+.commentbox {
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    width: 74%;
+    margin: 10px 0;
+    margin-left: 0px;
+    background-color: #d3d3d3;
+}
