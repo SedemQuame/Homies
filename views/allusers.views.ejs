@@ -6,21 +6,23 @@
         <div class="container">
             <div class="row">
                 <%for(let i=0; i < list.length; i++) {%>
-                    <div class="col-12 col-md-4 col-lg-3">
-                        <div class="card">
-                            <img class="all-users-img" src="<%- list[i].profile_url %>" class="card-img-top avatar_img" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%- list[i].name %>
-                                </h5>
-                                <p class="card-text">
-                                    <%-  list[i].residence %>
-                                </p>
-                                <a href="/get_user/<%- list[i]._id %>" class="btn btn-outline-dark btn-block">View Profile</a>
+                    <% if(emailAdd != list[i].email){ %>
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="card">
+                                <img class="all-users-img" src="<%- list[i].profile_url %>" class="card-img-top avatar_img" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%- list[i].name %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%-  list[i].residence %>
+                                    </p>
+                                    <a href="/get_user/<%- list[i]._id %>" class="btn btn-outline-dark btn-block">View Profile</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <% } %>
+                        <% } %>
+                            <% } %>
             </div>
         </div>
 

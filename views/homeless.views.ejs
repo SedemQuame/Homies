@@ -117,15 +117,17 @@
                         </div>
                     </form>
 
+                    <hr>
+
                     <% for(let i = colls.length-1; i > -1 ; i--) {%>
                         <% if(user_id == colls[i].recepientId) { %>
                             <div class="commentbox row">
-                                <div class="col-2">
+                                <div class="col-4">
                                     <p>
                                         <%- colls[i].senderId %>
                                     </p>
                                 </div>
-                                <div class="col-10">
+                                <div class="col-8">
                                     <p>
                                         <%- colls[i].comment %>
                                     </p>

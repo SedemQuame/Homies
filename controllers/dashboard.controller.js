@@ -11,10 +11,12 @@ const comment = require('../models/comments.models');
 let sess = null;
 
 
+
 exports.getAllUsers = (req, res) => {
+    sess = req.session;
     users.find().then(docs => {
         // console.log(docs);
-        res.render(__dirname + './../views/allusers.views.ejs', { list: docs });
+        res.render(__dirname + './../views/allusers.views.ejs', { list: docs, emailAdd: sess.useremail });
 
         // res.json({ results: docs });
     }).catch(err => {
@@ -23,7 +25,6 @@ exports.getAllUsers = (req, res) => {
 };
 
 exports.getSingleUser = (req, res) => {
-    console.log(req.params.user_id);
     users.findById(req.params.user_id).then(docs => {
         // console.log(docs);
         comment.find().then(com => {
@@ -35,11 +36,8 @@ exports.getSingleUser = (req, res) => {
 };
 
 exports.getUser = (req, res) => {
-    sess = req.session;
-
     // saving users id in sessions.
-    console.log(sess.useremail);
-
+    sess = req.session;
     users.findOne({ 'email_address': sess.useremail })
         .select('_id')
         .then(results => {
