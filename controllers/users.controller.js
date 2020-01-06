@@ -84,6 +84,8 @@ exports.login = (req, res) => {
     user_to_login = user.where({ email_address: req.body.email_address });
     user_to_login.findOne().then((returnedUser) => {
         // Load hash from your password DB.
+        console.log(req.body.password);
+        
         bcrypt.compare(req.body.password, returnedUser.password).then(function(response) {
             if (response == true) {
                 console.log('redirecting user .../');
@@ -92,13 +94,12 @@ exports.login = (req, res) => {
             } else {
                 console.log('account not found ... 🥱🥱🥱');
                 console.log('redirecting user .../');
-                res.redirect('/user_login');
+                res.render(__dirname + './../views/login.views.ejs', {errorMSG: 'Wrong Login Credentials'});
             }
         });
     }).catch((err) => {
         console.log('sorry, a serious error occurred ... 😪🙄😣');
         console.log('redirecting user .../');
         console.log(err);
-        res.redirect('/user_login');
-    });
+        res.render(__dirname + './../views/login.views.ejs', {errorMSG: 'Wrong Login Credentials'});    });
 };

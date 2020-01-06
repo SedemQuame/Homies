@@ -39,34 +39,15 @@
 
                         <div class="updatePreview">
 
-                            <div class="infoItem">
-                                <p>container</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
-
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>container</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
-
-                            <!-- <% homies.forEach(element => { %>
-                                <div class="infoItem">
-                                    <p>element</p>
-                                </div>
-                                <% }); %> -->
+                            <% if(homies != null){ %>
+                                <% homies.forEach(element => { %>
+                                    <div class="infoItem">
+                                        <p>element</p>
+                                    </div>
+                                    <% }); %>
+                                        <% } else { %>
+                                            <p class="text-center">No Homie Update Atm.</p>
+                                            <% } %>
                         </div>
 
                     </div>
@@ -75,18 +56,17 @@
                         <hr>
 
                         <div class="updatePreview">
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>container</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
-                            <div class="infoItem">
-                                <p>Home #1</p>
-                            </div>
+                            <% if(pledges != null){ %>
+                                <% pledges.forEach(element => { %>
+                                    <div class="infoItem">
+                                        <p>element</p>
+                                    </div>
+                                    <% }); %>
+                                        <% } else { %>
+                                            <p class="text-center">No Current Pledges Atm.</p>
+                                            <p class="text-center">Click the button below to pledge</p>
+                                            <button class="btn btn-success"> Pledge </button>
+                                            <% } %>
                         </div>
                     </div>
                 </div>

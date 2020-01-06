@@ -6,8 +6,7 @@ module.exports = app => {
     //========================================== app users routes ============================================//
     app.route('/user_login')
         .get((req, res) => {
-            res.render(__dirname + './../views/login.views.ejs');
-        });
+            res.render(__dirname + './../views/login.views.ejs', {errorMSG: null});        });
 
     app.route('/user_signup')
         .get((req, res) => {

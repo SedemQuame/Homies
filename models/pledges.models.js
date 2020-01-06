@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // ==================================== creating database schema=======================================//
 const pledgeSchema = mongoose.Schema({
     pledger: String,
+    beneficiary: String,
     amount: String,
     dateForFulfillment: String
 });

@@ -8,6 +8,7 @@ require('dotenv').config({ path: __dirname + './../.env' });
 const users = require('../models/users.models');
 const comment = require('../models/comments.models');
 const homies = require('../models/homies.models');
+const pledges = require('../models/pledges.models');
 
 let sess = null;
 
@@ -46,12 +47,17 @@ exports.getUser = (req, res) => {
             users.findById(results._id).then(docs => {
                 console.log(docs);
                 let homieDocs = null;
+                let pledgeDocs = null;
 
                 homies.find().then(docs => {
                     homieDocs = docs;
                 });
 
-                res.render(__dirname + './../views/dashboard.views.ejs', { data: docs, homies: homieDocs });
+                pledges.find().then(docs => {
+                    pledgeDocs = docs;
+                });
+
+                res.render(__dirname + './../views/dashboard.views.ejs', { data: docs, homies: homieDocs, pledges: pledgeDocs });
             });
         }).catch(err => {
             res.json({ error: err });
