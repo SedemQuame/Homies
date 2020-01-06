@@ -19,4 +19,10 @@ module.exports = app => {
 
     // login route
     app.route('/login').post(user.login);
+
+    // add person route (where person = homeless or handler)
+    app.route('/add_person')
+        .get((req, res) => {
+            res.render(__dirname + './../views/adduser.views.ejs');
+        });
 };

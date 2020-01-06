@@ -1,56 +1,146 @@
 <%- include('./partials/header.ejs');-%>
     <%- include('./partials/nav.ejs');-%>
-        <!-- signup portion -->
+        <div class="container">
+            <div class="row">
+                <div class="pane col-3">
+                    <div class="infoContainer">
+                        <img class="all-users-img" src="<%= data.profile_photo %>" alt="gray">
+                        <p class="text-center">
+                            <%= data.name %>
+                        </p>
+                        <hr>
 
-        <header class="header">
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <!-- Image -->
-                        <img class="persons_picture" src="<%- data.profile_url %>" alt="Kamal">
-                        <h2 class="text-center"><strong><%- data.name %></strong></h2>
+                        <p class="text-center">Profile Info</p>
+                        <hr>
+                        <p>Email Address:
+                            <%= data.email_address %>
+                        </p>
+                        <p>Phone number:
+                            <%= data.phone_number %>
+                        </p>
+                        <div class="form-check">
+                            <form action="" method="post">
+                                <!-- 
+                                    Onclick of the checkbox functionality
+                                    Toggle anonymous property.
+                                -->
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" <% if(data.anon){ %> checked
+                                <% } %>
+                                    >
+                                    <label class="form-check-label" for="exampleCheck1">Stay Anonymous</label>
+                            </form>
+                        </div>
                     </div>
+                </div>
+                <div class="pane col-6">
+                    <div class="infoContainer">
+                        <h4>Homies update</h4>
+                        <hr>
 
-                    <div class="col-md-8 row">
-                        <div class="col-7">
-                            <p class="field_data">Age:
-                                <%- data.age %>
-                            </p>
-                            <p class="field_data">Race:
-                                <%- data.race %>
-                            </p>
-                            <p class="field_data">Gender:
-                                <%- data.gender %>
-                            </p>
-                            <p class="field_data">Phone:
-                                <%- data.phone_number %>
-                            </p>
-                            <p class="field_data">Email:
-                                <%- data.email_address %>
-                            </p>
+                        <div class="updatePreview">
+
+                            <div class="infoItem">
+                                <p>container</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
+
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>container</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
+
+                            <!-- <% homies.forEach(element => { %>
+                                <div class="infoItem">
+                                    <p>element</p>
+                                </div>
+                                <% }); %> -->
                         </div>
 
-                        <div class="col-5">
+                    </div>
+                    <div class="infoContainer">
+                        <h4 class="col-12">My Pledges</h4>
+                        <hr>
 
-                            <p class="field_data">Special Skills:
-                                <%- data.special_skills %>
-                            </p>
-                            <p class="field_data">Medical History:
-                                <%- data.medical_history %>
-                            </p>
-                            <p class="field_data">Residence:
-                                <%- data.residence %>
-                            </p>
+                        <div class="updatePreview">
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>container</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
+                            <div class="infoItem">
+                                <p>Home #1</p>
+                            </div>
                         </div>
-
                     </div>
                 </div>
 
+                <div class="pane col-3">
+                    <!-- Add other users -->
+                    <div class="infoContainer">
+                        <h4 class="col-12">Add users</h4>
+                        <hr>
+
+                        <form action="/signup" method="POST" enctype="multipart/form-data">
+                            <p class="col-12 text-center">Personal Information</p>
+                            <hr>
+                            <div class="form-group"><label for="">Name</label><input type="text" class="form-control" name="name" required></div>
+
+                            <div class="form-group"><label for="">User Type </label>
+                                <select class="custom-select" name="userType">
+                                        <option selected>Choose...</option>
+                                        <option value="Homie">Homie</option>
+                                        <option value="Handler">Handler</option>
+                                      </select>
+                            </div>
+
+                            <div class="form-group"><label for="">Current Residence</label><input type="text" class="form-control" name="residence" required></div>
+
+                            <div class="form-group">
+                                <label for="">Bio</label>
+                                <textarea class="form-control" name="bio" id="" cols="20" rows="10"></textarea>
+                            </div>
+
+
+                            <p class="col-12 text-center">Contact Information</p>
+                            <hr>
+
+
+                            <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="emailAddress"></div>
+                            <div class="form-group"><label for="">Phone number</label><input type="text" class="form-control" name="phoneNumber"></div>
+                            <hr>
+
+                            <p class="text-center">Password will be generated automatically, and sent over email.</p>
+                            <hr>
+
+                            <div class="form-group">
+                                <p class="text-center">Upload a photo ID</p>
+                                <hr>
+                                <input type="file" name="profile_photo" id="uploader">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-outline-dark" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </header>
-        <!--End of Header-->
-
-
-
+        </div>
         <%- include('./partials/footer'); -%>

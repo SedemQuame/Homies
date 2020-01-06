@@ -4,20 +4,18 @@ const mongoose = require('mongoose');
 
 // ==================================== creating database schema=======================================//
 const userSchema = mongoose.Schema({
+    // personal information
     name: String,
-    age: String,
-    race: String,
-    gender: String,
+    user_type: {type: String, default: 'Individual'},
+    residence: { type: String, default: 'none' },
+    bio: String,
+
+    // contact information
     phone_number: String,
     email_address: String,
-    special_skills: String,
-    medical_history: String,
     password: String,
-    optional_message: String,
-    residence: { type: String, default: 'none' },
-    handler: { type: String, default: 'none' },
-    user_type: { type: String, default: 'homeless' },
-    profile_url: { type: String, default: 'none' }
+    profile_photo: { type: String, default: 'none' },
+    anon: {type: Boolean, default: false}
 });
 
 

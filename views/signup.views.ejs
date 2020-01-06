@@ -11,38 +11,48 @@
                     </p>
                     <!-- sign up forms -->
                     <form action="/signup" method="POST" enctype="multipart/form-data">
+                        <p class="col-12 text-center">Personal Information</p>
+                        <hr>
                         <div class="form-group"><label for="">Name</label><input type="text" class="form-control" name="name" required></div>
 
+                        <div class="form-group"><label for="">User Type </label>
+                            <select class="custom-select" name="userType">
+                                <option selected>Choose...</option>
+                                <option value="Individual">Individual</option>
+                                <option value="NGO">NGO</option>
+                              </select>
+                        </div>
+
+                        <div class="form-group"><label for="">Current Residence</label><input type="text" class="form-control" name="residence" required></div>
+
+                        <div class="form-group">
+                            <label for="">Bio</label>
+                            <textarea class="form-control" name="bio" id="" cols="20" rows="10"></textarea>
+                        </div>
+
+                        <p class="col-12 text-center">Contact Information</p>
+                        <hr>
                         <div class="row">
                             <div class="form-group col-6"><label for="">Email address</label><input type="text" class="form-control" name="emailAddress"></div>
                             <div class="form-group col-6"><label for="">Phone number</label><input type="text" class="form-control" name="phoneNumber"></div>
                         </div>
 
-                        <div class="row">
-                            <div class="form-group col-6"><label for="">Age</label><input type="text" class="form-control" name="age" required></div>
-                            <div class="form-group col-6"><label for="">Gender</label><input type="text" class="form-control" name="gender" required></div>
-                        </div>
+                        <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password" required></div>
+                        <div class="form-group"><label for="">Confirm password</label><input type="password" class="form-control" required></div>
 
-                        <div class="form-group"><label for="">Race</label>
-                            <input type="text" class="form-control" name="race" required>
-                        </div>
-                        <div class="form-group"><label for="">Current Residence</label><input type="text" class="form-control" name="residence" required></div>
-
-                        <div class="form-group"><label for="">Special Skills (if any)</label><input type="text" class="form-control" name="specialSkills"></div>
-
-                        <div class="form-group"><label for="">Medical History</label><input type="text" class="form-control" name="medHistory"></div>
-
-                        <div class="row">
-                            <div class="form-group col-6"><label for="">Password</label><input type="password" class="form-control" name="password" required></div>
-                            <div class="form-group col-6"><label for="">Confirm password</label><input type="password" class="form-control" required></div>
+                        <div class="form-group">
+                            <p class="text-center">Upload a photo ID or an NGO logo</p>
+                            <hr>
+                            <input type="file" name="profile_photo" id="">
                         </div>
 
                         <div class="form-group">
-                            <label for="">Optional Message</label>
-                            <textarea class="form-control" name="optionalMessage" id="" cols="30" rows="10"></textarea>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" value="true">
+                                <label class="custom-control-label" for="customCheck1">Keep me anonymous.</label>
+                            </div>
+                            <p>Your account information, will not be displayed, on the homepage.</p>
                         </div>
-
-                        <div class="form-group"><input type="file" name="profile_url" id=""></div>
 
                         <div class="form-group">
                             <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">

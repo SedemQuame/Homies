@@ -16,8 +16,12 @@ let storedPath, path;
 //================================== creating HTTP handler methods ==================================//
 // create new user
 exports.createUser = (req, res) => {
-    const image = req.files.profile_url;
-    path = __dirname + '/../public/img/' + image.name;
+    const image = req.files.profile_photo;
+    if(image.name == ""){
+        path = __dirname + '/../public/img/';    
+    }else{
+        path = __dirname + '/../public/img/' + image.name;
+    }
     storedPath = '/img/' + image.name;
 
     // Starting session.
@@ -27,24 +31,41 @@ exports.createUser = (req, res) => {
     sess.useremail = req.body.emailAddress;
     sess.username = req.body.name;
 
+    let state = null;
+
+    if(req.body.anon == 'true'){
+        state = true;
+    }else {
+        state = false;
+    }
+
     image.mv(path, () => {
-        bcrypt.hash(req.body.password, SALT_ROUNDS, function(err, hash) {
+        let password = req.body.password;
+
+        if(password == null){
+            const generator = require('generate-password');
+            console.log('no password, added. /n generating new password to be sent over email');
+            // generating automatic passwords.
+            password = generator.generate({
+                length: 10,
+                numbers: true
+            });
+
+            // sending generated password to user's email.
+        }
+
+        bcrypt.hash(password, SALT_ROUNDS, function(err, hash) {
             // Store hash in your password DB.
             user.create({
                 name: req.body.name,
+                residence: req.body.residence,
                 user_type: req.body.userType,
                 phone_number: req.body.phoneNumber,
                 email_address: req.body.emailAddress,
-                residence: req.body.residence,
-                handler: req.body.handler,
-                age: req.body.age,
-                race: req.body.race,
-                gender: req.body.gender,
-                special_skills: req.body.specialSkills,
-                medical_history: req.body.medHistory,
+                bio: req.body.bio,
                 password: hash,
-                optional_message: req.body.optionalMessage,
-                profile_url: storedPath
+                profile_photo: storedPath,
+                anon: state
             }).then(() => {
                 console.log('user account created ... 😎😎😎');
                 res.redirect('/dashboard/');
