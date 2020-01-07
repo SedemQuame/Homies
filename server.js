@@ -38,6 +38,7 @@ require('./routes/users.routes')(app);
 require('./routes/views.routes')(app);
 require('./routes/dashboard.routes')(app);
 require('./routes/comments.routes')(app);
+require('./routes/pledge.routes')(app);
 
 // define a simple route
 app.get('/', (req, res) => {

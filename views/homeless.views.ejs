@@ -43,7 +43,12 @@
                         </div>
 
                         <div class="col-2">
-                            <a class="btn btn-outline-dark" href="/pledges">Pledges <span class="badge badge-dark">4</span></a>
+                            <!-- <a class="btn btn-outline-dark" href="/pledges">Pledges <span class="badge badge-dark">4</span></a> 
+                            -->
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">
+                                Pledges <span class="badge badge-dark">4</span>
+                            </button>
                         </div>
 
                     </div>
@@ -78,16 +83,6 @@
 
             <!-- Section: Call To Action -->
             <div class="row">
-
-                <div class="col-12 col-md-6">
-                    <h1> Help Pane </h1>
-                    <p> Help
-                        <%- data.name %> by pledging resources to help
-                            <%- data.name %> grow.
-                    </p>
-                    <a class="btn btn-block btn-outline-dark" href="/help_out">Help Out</a>
-                </div>
-
                 <div class="col-12 col-md-6">
                     <h1> Fund </h1>
                     <p> Help
@@ -140,4 +135,56 @@
             </div>
 
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Pledge Form</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/pledges" method="POST">
+                            <input type="hidden" name="beneficiaryId" value="astar_search">
+                            <input type="hidden" name="benefactorId" value="<%= user_id %>">
+                            <div class="form-group">
+                                <label for="">Pledge Type</label>
+                                <select class="custom-select" name="pledgeType">
+                                    <option selected>Choose pledge type.</option>
+                                    <option value="Job">Job</option>
+                                    <option value="Counselling">Counselling</option>
+                                    <option value="Monetary">Monetary</option>
+                                    <option value="Accomadation">Accomadation</option>
+                                  </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Pledge</label>
+                                <input type="text" class="form-control" name="pledge" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Fulfillment Date</label>
+                                <input type="date" class="form-control" name="fulfillmentDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-block btn-outline-dark" type="submit" value="Submit">
+                            </div>
+
+                            <div class="form-group">
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <%- include('./partials/footer'); -%>

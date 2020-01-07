@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 
 // ==================================== creating database schema=======================================//
 const pledgeSchema = mongoose.Schema({
-    pledger: String,
-    beneficiary: String,
-    amount: String,
+    beneficiaryId: String,
+    benefactorId: String,
+    pledgeType: String,
+    pledge: String,
+    pledgeStatus: String,
     dateForFulfillment: String
 });
 

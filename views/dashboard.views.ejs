@@ -52,11 +52,11 @@
 
                     </div>
                     <div class="infoContainer">
-                        <h4 class="col-12">My Pledges</h4>
+                        <h1>My Pledges</h1>
                         <hr>
 
                         <div class="updatePreview">
-                            <% if(pledges != null){ %>
+                            <!-- <% if(pledges != null){ %>
                                 <% pledges.forEach(element => { %>
                                     <div class="infoItem">
                                         <p>element</p>
@@ -66,7 +66,38 @@
                                             <p class="text-center">No Current Pledges Atm.</p>
                                             <p class="text-center">Click the button below to pledge</p>
                                             <button class="btn btn-success"> Pledge </button>
-                                            <% } %>
+                                            <% } %> -->
+                            <p>List of pledges fulfilled, or otherwise.</p>
+                            <table class="table thead-dark table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Beneficiary</th>
+                                        <th scope="col">Pledge</th>
+                                        <th scope="col">To be fuilfilled by</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Benedicta</td>
+                                        <td>30.00</td>
+                                        <td>2019-11-09</td>
+                                        <td>fulfilled</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Issac</td>
+                                        <td>30.00</td>
+                                        <td>2019-11-09</td>
+                                        <td>pending</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ebub3</td>
+                                        <td>30.00</td>
+                                        <td>2019-11-09</td>
+                                        <td>pending</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

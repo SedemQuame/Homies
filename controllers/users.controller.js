@@ -74,7 +74,7 @@ exports.createUser = (req, res) => {
                 res.redirect('/user_signup');
             });
         });
-    });
+    }); 
 };
 
 
