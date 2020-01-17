@@ -38,16 +38,7 @@
                         <hr>
 
                         <div class="updatePreview">
-
-                            <% if(homies != null){ %>
-                                <% homies.forEach(element => { %>
-                                    <div class="infoItem">
-                                        <p>element</p>
-                                    </div>
-                                    <% }); %>
-                                        <% } else { %>
-                                            <p class="text-center">No Homie Update Atm.</p>
-                                            <% } %>
+                            <%= JSON.stringify(homies) %>
                         </div>
 
                     </div>
@@ -56,19 +47,9 @@
                         <hr>
 
                         <div class="updatePreview">
-                            <!-- <% if(pledges != null){ %>
-                                <% pledges.forEach(element => { %>
-                                    <div class="infoItem">
-                                        <p>element</p>
-                                    </div>
-                                    <% }); %>
-                                        <% } else { %>
-                                            <p class="text-center">No Current Pledges Atm.</p>
-                                            <p class="text-center">Click the button below to pledge</p>
-                                            <button class="btn btn-success"> Pledge </button>
-                                            <% } %> -->
                             <p>List of pledges fulfilled, or otherwise.</p>
-                            <table class="table thead-dark table-striped">
+                            <%= JSON.stringify(pledges) %>
+                                <!-- <table class="table thead-dark table-striped">
                                 <thead>
                                     <tr>
                                         <th scope="col">Beneficiary</th>
@@ -97,7 +78,7 @@
                                         <td>pending</td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> -->
                         </div>
                     </div>
                 </div>

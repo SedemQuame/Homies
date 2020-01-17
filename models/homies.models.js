@@ -9,6 +9,5 @@ const homieSchema = mongoose.Schema({
     postPhotoUrl: String
 });
 
-
 // ==================================== creating schema model =========================================//
 module.exports = mongoose.model('homie', homieSchema);

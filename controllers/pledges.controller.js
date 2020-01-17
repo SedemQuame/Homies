@@ -7,13 +7,14 @@ require('dotenv').config({ path: __dirname + './../.env' });
 // custom models
 const pledge = require('../models/pledges.models');
 
-exports.getAllPledges = (req, res) => {
-    pledge.find().then(docs => {
-        // console.log(docs);
-        res.send({collections: docs});
-    }).catch(err => {
-        res.json({ error: err });
-    });
+exports.getAllPledges = async (req, res) => {
+    try {
+        await pledge.find().then(docs => {
+            return docs;
+        });
+    } catch (error) {
+        return null;
+    }
 };
 
 exports.createPledge = (req, res) => {  

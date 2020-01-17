@@ -7,11 +7,13 @@ require('dotenv').config({ path: __dirname + './../.env' });
 // custom models
 const users = require('../models/users.models');
 const comment = require('../models/comments.models');
-const homies = require('../models/homies.models');
 const pledges = require('../models/pledges.models');
 
-let sess = null;
+// custom controllers
+const homiesController = require('../controllers/homies.controller');
+const pledgeController = require('../controllers/pledges.controller');
 
+let sess = null;
 
 
 exports.getAllUsers = (req, res) => {
@@ -40,26 +42,28 @@ exports.getSingleUser = (req, res) => {
 exports.getUser = (req, res) => {
     // saving users id in sessions.
     sess = req.session;
+    
+    // Error: session is not storing the email of the user to query the database,
+    // Hence user is presented with an error on page reload.
+    // Must fix problem priority Beta.
     users.findOne({ 'email_address': sess.useremail })
         .select('_id')
         .then(results => {
             sess.user_id = results._id;
             users.findById(results._id).then(docs => {
-                console.log(docs);
-                let homieDocs = null;
-                let pledgeDocs = null;
+                // getting homies update preview
+                let homieDocs = homiesController.getHomiesUpdatePreview();
 
-                homies.find().then(docs => {
-                    homieDocs = docs;
-                });
-
-                pledges.find().then(docs => {
-                    pledgeDocs = docs;
-                });
-
+                // getting pledge update preview
+                let pledgeDocs = pledgeController.getAllPledges();
+             
+                console.log("homie data: " + homieDocs);
+                
                 res.render(__dirname + './../views/dashboard.views.ejs', { data: docs, homies: homieDocs, pledges: pledgeDocs });
             });
         }).catch(err => {
-            res.json({ error: err });
+            // redirect user to the login page.
+            // with and error message, if an error occurs.
+            res.render(__dirname + './../views/login.views.ejs', {errorMSG: 'User Authentication Unsuccessful.'});
         });
 };
