@@ -19,10 +19,7 @@ let sess = null;
 exports.getAllUsers = (req, res) => {
     sess = req.session;
     users.find().then(docs => {
-        // console.log(docs);
         res.render(__dirname + './../views/allusers.views.ejs', { list: docs, emailAdd: sess.useremail });
-
-        // res.json({ results: docs });
     }).catch(err => {
         res.json({ error: err });
     });
@@ -30,7 +27,6 @@ exports.getAllUsers = (req, res) => {
 
 exports.getSingleUser = (req, res) => {
     users.findById(req.params.user_id).then(docs => {
-        // console.log(docs);
         comment.find().then(com => {
             res.render(__dirname + './../views/homeless.views.ejs', { data: docs, colls: com, user_id: req.params.user_id });
         });
@@ -53,12 +49,8 @@ exports.getUser = (req, res) => {
             users.findById(results._id).then(docs => {
                 // getting homies update preview
                 let homieDocs = homiesController.getHomiesUpdatePreview();
-
                 // getting pledge update preview
                 let pledgeDocs = pledgeController.getAllPledges();
-             
-                console.log("homie data: " + homieDocs);
-                
                 res.render(__dirname + './../views/dashboard.views.ejs', { data: docs, homies: homieDocs, pledges: pledgeDocs });
             });
         }).catch(err => {

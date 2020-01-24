@@ -1,6 +1,35 @@
+/* ================TAGS=============== */
+
 body {
     background: #fff;
 }
+
+h1,
+h2,
+h2 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+}
+
+th {
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+}
+
+div,
+p,
+td {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    padding: 0;
+}
+
+nav {
+    height: 8vh;
+}
+
+
+/* ================CLASS=============== */
 
 .header {
     padding: 10px 0;
@@ -35,27 +64,6 @@ body {
     height: 200px;
 }
 
-nav {
-    height: 8vh;
-}
-
-h1,
-h2,
-h2 {
-    font-family: 'Rubik', sans-serif;
-    font-size: 24px;
-}
-
-div,
-p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-}
-
-#more_user_information {
-    margin-bottom: 30px;
-}
-
 .user_data_field {
     min-height: 30px;
     margin-top: 10px;
@@ -75,10 +83,6 @@ p {
     margin: 10px 0;
     margin-left: 0px;
     background-color: #d3d3d3;
-}
-
-#donation_form {
-    margin-top: 40px;
 }
 
 .pane {
@@ -111,6 +115,54 @@ p {
     margin: 10px 2%;
 }
 
-#uploader {
+.homieProfileUrl {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.login_or_sign_container {
+    margin-top: 7%;
+}
+
+.dashboardIcons {
+    width: 25px;
+    height: 25px;
+}
+
+
+/* ================IDs=============== */
+
+
+/* #uploader {
     width: 100%;
+} */
+
+#donation_form {
+    margin-top: 40px;
+}
+
+#more_user_information {
+    margin-bottom: 30px;
+}
+
+.form-control,
+.custom-select {
+    border: 1px solid #000000;
+    border-radius: 0px;
+    padding: 0;
+    height: 28px;
+    font-size: 11px;
+}
+
+textarea {
+    line-height: none;
+}
+
+.pwsd_text {
+    font-size: 11px;
+}
+
+.font-weight-bolder {
+    padding-left: 0;
 }
