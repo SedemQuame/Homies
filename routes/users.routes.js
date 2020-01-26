@@ -10,8 +10,9 @@ module.exports = app => {
 
     app.route('/user_signup')
         .get((req, res) => {
-            res.render(__dirname + './../views/signup.views.ejs');
+            res.render(__dirname + './../views/signup.views.ejs', {errorMSG: null});
         });
+
 
     // signup route
     app.route('/signup').post(user.createUser);
