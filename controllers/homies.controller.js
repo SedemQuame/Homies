@@ -30,9 +30,10 @@ exports.getHomieInfo = (req, res) => {
 
 exports.updateHomieInfo = (req, res) => {  
     // update homie data by id.
-    users.findByIdAndUpdate(id, update, () => {
-        // redirect to homie information page
-    });
+    // users.findByIdAndUpdate(id, update, () => {
+    //     // redirect to homie information page
+    // });
+    users.findOneAndUpdate({})
 };
 
 exports.createNewHomieInfo = (req, res) => {

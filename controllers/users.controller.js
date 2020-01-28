@@ -15,10 +15,8 @@ let storedPath, path;
 
 //================================== creating HTTP handler methods ==================================//
 // create new user
-exports.createUser = (req, res) => {
-    user.countDocuments({email_address: 'sedem.amekpewu.3@gmail.com'}, (err, result) => {
-        console.log(typeof result);
-        console.log(result);
+exports.createUser = (req, res) => {    
+    user.countDocuments({email_address: req.body.emailAddress}, (err, result) => {
         if(result>=1){
             console.log('Stop.');
             res.render(__dirname + './../views/signup.views.ejs', {errorMSG: 'Email Already Exists. Please use a different email to register.'});
@@ -76,6 +74,9 @@ exports.createUser = (req, res) => {
                             anon: state
                         }).then(() => {
                             console.log('user account created ... 😎😎😎');
+                            if(req.body.formType == 'homieOrHandler'){
+                                res.redirect('/add_person');
+                            }
                             res.redirect('/dashboard/');
                         }).catch((err) => {
                             console.log('user not created ... 😪🙄😣');

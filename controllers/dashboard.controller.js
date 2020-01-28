@@ -7,14 +7,14 @@ require('dotenv').config({ path: __dirname + './../.env' });
 // custom models
 const users = require('../models/users.models');
 const comment = require('../models/comments.models');
-const pledges = require('../models/pledges.models');
+const pledge = require('../models/pledges.models');
+const homieStory = require('../models/homieStory.models');
 
 // custom controllers
 const homiesController = require('../controllers/homies.controller');
 const pledgeController = require('../controllers/pledges.controller');
 
 let sess = null;
-
 
 exports.getAllUsers = (req, res) => {
     sess = req.session;
@@ -48,10 +48,25 @@ exports.getUser = (req, res) => {
             sess.user_id = results._id;
             users.findById(results._id).then(docs => {
                 // getting homies update preview
-                let homieDocs = homiesController.getHomiesUpdatePreview();
-                // getting pledge update preview
-                let pledgeDocs = pledgeController.getAllPledges();
-                res.render(__dirname + './../views/dashboard.views.ejs', { data: docs, homies: homieDocs, pledges: pledgeDocs });
+                // let homieDocs = homiesController.getHomiesUpdatePreview();
+                    try {
+                        users.find({user_type: "Homie"}).then(homieDocs => {                  
+                            console.log(homieDocs);
+                            // getting pledge update preview
+                            // let pledgeDocs = pledgeController.getAllPledges();
+                            pledge.find().then(pledgeDocs => {
+                                // console.log(pledgeDocs);
+                                homieStory.find().then(story => {
+                                    res.render(__dirname + './../views/dashboard.views.ejs',
+                                                { data: docs, homies: homieDocs, pledges: pledgeDocs, homieStory: story});
+                                });
+                            });
+                        });
+                    } catch (error) {
+                        console.log("Error ocurred.");
+                        console.log(error);
+                    }
+
             });
         }).catch(err => {
             // redirect user to the login page.

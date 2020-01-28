@@ -2,6 +2,7 @@
 // ================================ creating list application route ===================================//
 module.exports = app => {
     const user = require('../controllers/users.controller');
+    const dashboard = require('../controllers/dashboard.controller');
 
     //========================================== app users routes ============================================//
     app.route('/user_login')
@@ -22,7 +23,5 @@ module.exports = app => {
 
     // add person route (where person = homeless or handler)
     app.route('/add_person')
-        .get((req, res) => {
-            res.render(__dirname + './../views/adduser.views.ejs');
-        });
+        .get(dashboard.getAllUsers);
 };

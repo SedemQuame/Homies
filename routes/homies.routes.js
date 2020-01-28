@@ -2,6 +2,7 @@
 // ================================ creating list application route ===================================//
 module.exports = app => {
     const homies = require('../controllers/homies.controller');
+    const homiesStory = require('../controllers/homieStory.controller');
 
     //========================================== app users routes ============================================//
     app.route('')
@@ -10,8 +11,8 @@ module.exports = app => {
     app.route('')
         .get(homies.getHomieInfo);
 
-    app.route('')
-        .get(homies.updateHomieInfo);
+    app.route('/homieStoryUpdate')
+        .post(homiesStory.addHomieStory);
 
     app.route('')
         .get(homies.createNewHomieInfo);
