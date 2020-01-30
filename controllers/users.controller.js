@@ -8,9 +8,9 @@ const fs = require('fs');
 const cloudinary = require('cloudinary').v2;
 // set your env variable CLOUDINARY_URL or set the following configuration
 cloudinary.config({
-    cloud_name: 'dqv3zrm7e',
-    api_key: '951349685261825',
-    api_secret: 'E2RWEKKu_fkWiaakpWyic4XFcyk',
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET,
   });
   
 

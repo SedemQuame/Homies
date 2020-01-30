@@ -85,157 +85,163 @@
                                         <%}%>
                                             <div class="pane col-12 infoContainer2">
                                                 <div class="row">
-                                                    <div class="pane col-12 col-md-9">
-                                                        <div class="infoContainer">
-                                                            <h1>Homies update</h1>
-                                                            <hr>
-                                                            <div class="updatePreview">
-                                                                <p class="font-weight-bolder">Progress report of homies, around you.</p>
-                                                                <table class="table thead-dark table-striped">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col">Profile</th>
-                                                                            <th scope="col">Name</th>
-                                                                            <th scope="col">Update</th>
-                                                                            <th scope="col">Score</th>
-                                                                            <th scope="col">Story</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <!-- <tr>
-                                                    <td>
-                                                        <img class="homieProfileUrl" src="/img/gray.jpg" alt="photo_url" /></td>
-                                                    <td>Sedem Quame Amekpewu</td>
-                                                    <td>Update preview</td>
-                                                    <td class="text-success">+3.5</td>
-                                                    <td>
-                                                        <a href="#">Read</a>
-                                                    </td>
-                                                </tr> -->
+                                                    <%if(data.user_type == 'NGO'){%>
+                                                        <div class="pane col-12 col-md-9">
+                                                            <%}else{%>
+                                                                <div class="pane col-12 col-md-12">
+                                                                    <%}%>
+                                                                        <div class="infoContainer">
+                                                                            <h1>Homies update</h1>
+                                                                            <hr>
+                                                                            <div class="updatePreview">
+                                                                                <p class="font-weight-bolder">Progress report of homies, around you.</p>
+                                                                                <%if(homieStory.length <= 0){%>
+                                                                                    <div class="container jumbotron text-center">
+                                                                                        No homie updates, have been logged so far.
+                                                                                    </div>
+                                                                                    <%}else{%>
+                                                                                        <table class="table thead-dark table-striped">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th scope="col">Profile</th>
+                                                                                                    <th scope="col">Name</th>
+                                                                                                    <th scope="col">Update</th>
+                                                                                                    <th scope="col">Score</th>
+                                                                                                    <th scope="col">Story</th>
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <!-- Using ejs to manipulate basic structure. -->
+                                                                                                <% for(let j=0; j< homieStory.length; j++){ %>
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <img class="homieProfileUrl" src="/img/gray.jpg" alt="photo_url" /></td>
+                                                                                                        <td>
+                                                                                                            <%=homieStory[j].homieUnderReview%>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%=homieStory[j].homieReport%>
+                                                                                                        </td>
+                                                                                                        <td class="text-success">
+                                                                                                            <%=homieStory[j].progressScore%>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <a href="#">Read</a>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <% } %>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <%}%>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="infoContainer ">
+                                                                            <h1>Pledges</h1>
+                                                                            <hr>
+                                                                            <div class="updatePreview ">
+                                                                                <p class="font-weight-bolder">List of pledges fulfilled, or otherwise.</p>
+                                                                                <%if(pledges.length <= 0){%>
+                                                                                    <div class="container jumbotron text-center">
+                                                                                        No pledges made,have been made in the community so far.
+                                                                                    </div>
+                                                                                    <%}else{%>
+                                                                                        <table class="table thead-dark table-striped ">
+                                                                                            <thead>
+                                                                                                <tr>
+                                                                                                    <th scope="col ">Benefactor</th>
+                                                                                                    <th scope="col ">Beneficiary</th>
+                                                                                                    <th scope="col ">Pledge Type</th>
+                                                                                                    <th scope="col ">Pledge</th>
+                                                                                                    <th scope="col ">Fulfilled By</th>
+                                                                                                    <!-- <th scope="col ">Status</th> -->
+                                                                                                </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+                                                                                                <%for(let i = 0; i < pledges.length; i++){%>
+                                                                                                    <tr>
+                                                                                                        <td>
+                                                                                                            <a href="#">
+                                                                                                                <%if(pledges[i].beneficiaryId == null){%>
+                                                                                                                    <%='Anonymous'%>
+                                                                                                                        <%}else{%>
+                                                                                                                            <%=pledges[i].beneficiaryId%>
+                                                                                                                                <%}%>
+                                                                                                            </a>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <a href="#">
+                                                                                                                <%=pledges[i].benefactorId%>
+                                                                                                            </a>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%=pledges[i].pledgeType%>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%=pledges[i].pledge%>
+                                                                                                        </td>
+                                                                                                        <td>
+                                                                                                            <%=pledges[i].dateForFulfillment%>
+                                                                                                        </td>
+                                                                                                        <!-- <td class="text-success">fulfilled</td> -->
+                                                                                                    </tr>
+                                                                                                    <%}%>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                        <%}%>
+                                                                            </div>
+                                                                        </div>
+                                                                </div>
+                                                                <%if(data.user_type == 'NGO'){%>
+                                                                    <div class="pane col-12 col-md-3">
+                                                                        <!-- Add other users -->
+                                                                        <div class="infoContainer ">
+                                                                            <h1 class="col-12 ">Add users</h1>
+                                                                            <hr>
+                                                                            <form action="/homieSignup" method="POST" enctype="multipart/form-data">
+                                                                                <p class="col-12 font-weight-bolder">Register Homie/Handler </p>
+                                                                                <div class="form-group "><label for=" ">Name</label><input type="text " class="form-control " name="name" required></div>
 
-                                                                        <!-- Using ejs to manipulate basic structure. -->
-                                                                        <% for(let j=0; j< homieStory.length; j++){ %>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <img class="homieProfileUrl" src="/img/gray.jpg" alt="photo_url" /></td>
-                                                                                <td>
-                                                                                    <%=homieStory[j].homieUnderReview%>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <%=homieStory[j].homieReport%>
-                                                                                </td>
-                                                                                <td class="text-success">
-                                                                                    <%=homieStory[j].progressScore%>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <a href="#">Read</a>
-                                                                                </td>
-                                                                            </tr>
-                                                                            <% } %>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                                                <div class="form-group "><label for=" ">User Type </label>
+                                                                                    <select class="custom-select " name="userType">
+                                                                        <option selected>Choose...</option>
+                                                                        <option value="Homie">Homie</option>
+                                                                        <option value="Handler">Handler</option>
+                                                                    </select>
+                                                                                </div>
 
+                                                                                <div class="form-group ">
+                                                                                    <label for=" ">Current Residence</label>
+                                                                                    <input type="text " class="form-control " name="residence" required></div>
+
+                                                                                <div class="form-group ">
+                                                                                    <label for=" ">Bio</label>
+                                                                                    <textarea class="form-control " name="bio" id=" " rows="5"></textarea>
+                                                                                </div>
+                                                                                <hr>
+
+                                                                                <p class="col-12 text-left font-weight-bolder">Contact Information</p>
+                                                                                <div class="form-group "><label for=" ">Email address</label><input type="text " class="form-control " name="emailAddress"></div>
+                                                                                <div class="form-group "><label for=" ">Phone number</label><input type="text " class="form-control " name="phoneNumber"></div>
+                                                                                <p class="text-left text-black-50 pwsd_text">Password will be generated automatically, and sent over email.</p>
+                                                                                <hr>
+
+                                                                                <div class="form-group">
+                                                                                    <p class="text-left font-weight-bolder">Upload a photo ID</p>
+                                                                                    <input class="form-control" type="file" name="profile_photo" id="uploader">
+                                                                                </div>
+
+                                                                                <input type="hidden" name="formType" value="homieOrHandler">
+
+                                                                                <div class="form-group">
+                                                                                    <input type="submit" class="btn btn-outline-dark btn-block" value="Submit">
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                    <%}%>
                                                         </div>
-                                                        <div class="infoContainer ">
-                                                            <h1>Pledges</h1>
-                                                            <hr>
-                                                            <div class="updatePreview ">
-                                                                <p class="font-weight-bolder">List of pledges fulfilled, or otherwise.</p>
-                                                                <table class="table thead-dark table-striped ">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th scope="col ">Benefactor</th>
-                                                                            <th scope="col ">Beneficiary</th>
-                                                                            <th scope="col ">Pledge Type</th>
-                                                                            <th scope="col ">Pledge</th>
-                                                                            <th scope="col ">Fulfilled By</th>
-                                                                            <!-- <th scope="col ">Status</th> -->
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <%for(let i = 0; i < pledges.length; i++){%>
-                                                                            <tr>
-                                                                                <td>
-                                                                                    <a href="#">
-                                                                                        <%if(pledges[i].beneficiaryId == null){%>
-                                                                                            <%='Anonymous'%>
-                                                                                                <%}else{%>
-                                                                                                    <%=pledges[i].beneficiaryId%>
-                                                                                                        <%}%>
-                                                                                    </a>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <a href="#">
-                                                                                        <%=pledges[i].benefactorId%>
-                                                                                    </a>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <%=pledges[i].pledgeType%>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <%=pledges[i].pledge%>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <%=pledges[i].dateForFulfillment%>
-                                                                                </td>
-                                                                                <!-- <td class="text-success">fulfilled</td> -->
-                                                                            </tr>
-                                                                            <%}%>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="pane col-12 col-md-3">
-                                                        <!-- Add other users -->
-                                                        <div class="infoContainer ">
-                                                            <h1 class="col-12 ">Add users</h1>
-                                                            <hr>
-                                                            <form action="/homieSignup" method="POST" enctype="multipart/form-data">
-                                                                <p class="col-12 font-weight-bolder">Register Homie/Handler </p>
-                                                                <div class="form-group "><label for=" ">Name</label><input type="text " class="form-control " name="name" required></div>
-
-                                                                <div class="form-group "><label for=" ">User Type </label>
-                                                                    <select class="custom-select " name="userType">
-                                                    <option selected>Choose...</option>
-                                                    <option value="Homie">Homie</option>
-                                                    <option value="Handler">Handler</option>
-                                                  </select>
-                                                                </div>
-
-                                                                <div class="form-group ">
-                                                                    <label for=" ">Current Residence</label>
-                                                                    <input type="text " class="form-control " name="residence" required></div>
-
-                                                                <div class="form-group ">
-                                                                    <label for=" ">Bio</label>
-                                                                    <textarea class="form-control " name="bio" id=" " rows="5"></textarea>
-                                                                </div>
-                                                                <hr>
-
-                                                                <p class="col-12 text-left font-weight-bolder">Contact Information</p>
-                                                                <div class="form-group "><label for=" ">Email address</label><input type="text " class="form-control " name="emailAddress"></div>
-                                                                <div class="form-group "><label for=" ">Phone number</label><input type="text " class="form-control " name="phoneNumber"></div>
-                                                                <p class="text-left text-black-50 pwsd_text">Password will be generated automatically, and sent over email.</p>
-                                                                <hr>
-
-                                                                <div class="form-group">
-                                                                    <p class="text-left font-weight-bolder">Upload a photo ID</p>
-                                                                    <input class="form-control" type="file" name="profile_photo" id="uploader">
-                                                                </div>
-
-                                                                <input type="hidden" name="formType" value="homieOrHandler">
-
-                                                                <div class="form-group">
-                                                                    <input type="submit" class="btn btn-outline-dark btn-block" value="Submit">
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                     </div>
                             </div>
-            </div>
-            <%- include('./partials/footer'); -%>
+                            <%- include('./partials/footer'); -%>
