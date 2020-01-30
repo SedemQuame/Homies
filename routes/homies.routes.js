@@ -5,18 +5,18 @@ module.exports = app => {
     const homiesStory = require('../controllers/homieStory.controller');
 
     //========================================== app users routes ============================================//
-    app.route('')
-        .get(homies.getHomiesUpdatePreview);
+    // app.route('')
+    //     .get(homies.getHomiesUpdatePreview);
 
-    app.route('')
-        .get(homies.getHomieInfo);
+    // app.route('')
+    //     .get(homies.getHomieInfo);
 
     app.route('/homieStoryUpdate')
         .post(homiesStory.addHomieStory);
 
-    app.route('')
-        .get(homies.createNewHomieInfo);
+    // app.route('')
+    //     .get(homies.createNewHomieInfo);
 
-    app.route('')
-        .get(homies.deleteHomieInfoPermanently);
+    // app.route('')
+    //     .get(homies.deleteHomieInfoPermanently);
 };

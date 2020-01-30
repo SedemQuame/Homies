@@ -17,6 +17,10 @@
                             <span class="float-right"><%= data.name %></span>
                         </p>
                         <p>
+                            <span class="font-weight-bolder">Account Type: </span>
+                            <span class="float-right"><%=data.user_type%></span>
+                        </p>
+                        <p>
                             <span class="font-weight-bolder">Phone: </span>
                             <span class="float-right"><%= data.phone_number %></span>
                         </p>
@@ -38,58 +42,67 @@
                         </div>
                     </div>
                 </div>
-                <div class="row col-12 col-md-9">
-                    <div id="poster" class="pane col-12">
-                        <h1 class="text-capitalize">Update the story of a homie in you NGO</h1>
-                        <form action="/homieStoryUpdate" method="post">
-                            <div class="form-group">
-                                <labe>Homie</labe>
-                                <select class="custom-select" name="homieUnderReview">
+                <%if(data.user_type == 'NGO'){%>
+                    <div class="row col-12 col-md-9">
+                        <div id="poster" class="pane col-12">
+                            <h1 class="text-capitalize">Update the story of a homie in you NGO</h1>
+                            <hr>
+                            <form action="/homieStoryUpdate" method="post">
+                                <div class="form-group">
+                                    <labe>Homie</labe>
+                                    <select class="custom-select" name="homieUnderReview">
                                 <option selected>Open this select menu</option>
                                 <% for(let i = 0; i < homies.length; i++){ %>
                                     <option class="text-capitalize" value="<%- homies[0]._id %>"><%- homies[0].name %></option>
                                     <%}%>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <labe>Report</labe>
-                                <textarea class="form-control" name="homieReport" id="" rows="10" placeholder="Please leave an honest review, of the homies progress/digress. for correct type of support."></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Progress Score</label>
-                                <select class="custom-select" name="progressScore">
+                                </div>
+                                <div class="form-group">
+                                    <labe>Report</labe>
+                                    <textarea class="form-control" name="homieReport" id="" rows="10" placeholder="Please leave an honest review, of the homies progress/digress. for correct type of support."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Progress Score</label>
+                                    <select class="custom-select" name="progressScore">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
-                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-outline-dark btn-block">Submit</button>
+                                </div>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                    <div class="pane col-12 infoContainer2">
-                        <div class="row">
-                            <div class="pane col-12 col-md-9">
-                                <div class="infoContainer">
-                                    <h1>Homies update</h1>
-                                    <hr>
-                                    <div class="updatePreview">
-                                        <p class="font-weight-bolder">Progress report of homies, around you.</p>
-                                        <table class="table thead-dark table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Profile</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Update</th>
-                                                    <th scope="col">Score</th>
-                                                    <th scope="col">Story</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- <tr>
+                    <%}%>
+                        <%if(data.user_type == 'NGO'){%>
+                            <div class="row col-12 col-md-12">
+                                <%}else{%>
+                                    <div class="row col-12 col-md-9">
+                                        <%}%>
+                                            <div class="pane col-12 infoContainer2">
+                                                <div class="row">
+                                                    <div class="pane col-12 col-md-9">
+                                                        <div class="infoContainer">
+                                                            <h1>Homies update</h1>
+                                                            <hr>
+                                                            <div class="updatePreview">
+                                                                <p class="font-weight-bolder">Progress report of homies, around you.</p>
+                                                                <table class="table thead-dark table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col">Profile</th>
+                                                                            <th scope="col">Name</th>
+                                                                            <th scope="col">Update</th>
+                                                                            <th scope="col">Score</th>
+                                                                            <th scope="col">Story</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <!-- <tr>
                                                     <td>
                                                         <img class="homieProfileUrl" src="/img/gray.jpg" alt="photo_url" /></td>
                                                     <td>Sedem Quame Amekpewu</td>
@@ -100,129 +113,129 @@
                                                     </td>
                                                 </tr> -->
 
-                                                <!-- Using ejs to manipulate basic structure. -->
-                                                <% for(let j=0; j< homieStory.length; j++){ %>
-                                                    <tr>
-                                                        <td>
-                                                            <img class="homieProfileUrl" src="/img/gray.jpg" alt="photo_url" /></td>
-                                                        <td>
-                                                            <%=homieStory[j].homieUnderReview%>
-                                                        </td>
-                                                        <td>
-                                                            <%=homieStory[j].homieReport%>
-                                                        </td>
-                                                        <td class="text-success">
-                                                            <%=homieStory[j].progressScore%>
-                                                        </td>
-                                                        <td>
-                                                            <a href="#">Read</a>
-                                                        </td>
-                                                    </tr>
-                                                    <% } %>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                                        <!-- Using ejs to manipulate basic structure. -->
+                                                                        <% for(let j=0; j< homieStory.length; j++){ %>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <img class="homieProfileUrl" src="/img/gray.jpg" alt="photo_url" /></td>
+                                                                                <td>
+                                                                                    <%=homieStory[j].homieUnderReview%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=homieStory[j].homieReport%>
+                                                                                </td>
+                                                                                <td class="text-success">
+                                                                                    <%=homieStory[j].progressScore%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="#">Read</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <% } %>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
 
-                                </div>
-                                <div class="infoContainer ">
-                                    <h1>Pledges</h1>
-                                    <hr>
-                                    <div class="updatePreview ">
-                                        <p class="font-weight-bolder">List of pledges fulfilled, or otherwise.</p>
-                                        <table class="table thead-dark table-striped ">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col ">Benefactor</th>
-                                                    <th scope="col ">Beneficiary</th>
-                                                    <th scope="col ">Pledge Type</th>
-                                                    <th scope="col ">Pledge</th>
-                                                    <th scope="col ">Fulfilled By</th>
-                                                    <!-- <th scope="col ">Status</th> -->
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <%for(let i = 0; i < pledges.length; i++){%>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="#">
-                                                                <%if(pledges[i].beneficiaryId == null){%>
-                                                                    <%='Anonymous'%>
-                                                                        <%}else{%>
-                                                                            <%=pledges[i].beneficiaryId%>
-                                                                                <%}%>
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <a href="#">
-                                                                <%=pledges[i].benefactorId%>
-                                                            </a>
-                                                        </td>
-                                                        <td>
-                                                            <%=pledges[i].pledgeType%>
-                                                        </td>
-                                                        <td>
-                                                            <%=pledges[i].pledge%>
-                                                        </td>
-                                                        <td>
-                                                            <%=pledges[i].dateForFulfillment%>
-                                                        </td>
-                                                        <!-- <td class="text-success">fulfilled</td> -->
-                                                    </tr>
-                                                    <%}%>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pane col-12 col-md-3">
-                                <!-- Add other users -->
-                                <div class="infoContainer ">
-                                    <h1 class="col-12 ">Add users</h1>
-                                    <hr>
-                                    <form action="/signup" method="POST" enctype="multipart/form-data">
-                                        <p class="col-12 font-weight-bolder">Register Homie/Handler </p>
-                                        <div class="form-group "><label for=" ">Name</label><input type="text " class="form-control " name="name" required></div>
+                                                        </div>
+                                                        <div class="infoContainer ">
+                                                            <h1>Pledges</h1>
+                                                            <hr>
+                                                            <div class="updatePreview ">
+                                                                <p class="font-weight-bolder">List of pledges fulfilled, or otherwise.</p>
+                                                                <table class="table thead-dark table-striped ">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th scope="col ">Benefactor</th>
+                                                                            <th scope="col ">Beneficiary</th>
+                                                                            <th scope="col ">Pledge Type</th>
+                                                                            <th scope="col ">Pledge</th>
+                                                                            <th scope="col ">Fulfilled By</th>
+                                                                            <!-- <th scope="col ">Status</th> -->
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <%for(let i = 0; i < pledges.length; i++){%>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <a href="#">
+                                                                                        <%if(pledges[i].beneficiaryId == null){%>
+                                                                                            <%='Anonymous'%>
+                                                                                                <%}else{%>
+                                                                                                    <%=pledges[i].beneficiaryId%>
+                                                                                                        <%}%>
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="#">
+                                                                                        <%=pledges[i].benefactorId%>
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=pledges[i].pledgeType%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=pledges[i].pledge%>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <%=pledges[i].dateForFulfillment%>
+                                                                                </td>
+                                                                                <!-- <td class="text-success">fulfilled</td> -->
+                                                                            </tr>
+                                                                            <%}%>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pane col-12 col-md-3">
+                                                        <!-- Add other users -->
+                                                        <div class="infoContainer ">
+                                                            <h1 class="col-12 ">Add users</h1>
+                                                            <hr>
+                                                            <form action="/homieSignup" method="POST" enctype="multipart/form-data">
+                                                                <p class="col-12 font-weight-bolder">Register Homie/Handler </p>
+                                                                <div class="form-group "><label for=" ">Name</label><input type="text " class="form-control " name="name" required></div>
 
-                                        <div class="form-group "><label for=" ">User Type </label>
-                                            <select class="custom-select " name="userType">
+                                                                <div class="form-group "><label for=" ">User Type </label>
+                                                                    <select class="custom-select " name="userType">
                                                     <option selected>Choose...</option>
                                                     <option value="Homie">Homie</option>
                                                     <option value="Handler">Handler</option>
                                                   </select>
-                                        </div>
+                                                                </div>
 
-                                        <div class="form-group ">
-                                            <label for=" ">Current Residence</label>
-                                            <input type="text " class="form-control " name="residence" required></div>
+                                                                <div class="form-group ">
+                                                                    <label for=" ">Current Residence</label>
+                                                                    <input type="text " class="form-control " name="residence" required></div>
 
-                                        <div class="form-group ">
-                                            <label for=" ">Bio</label>
-                                            <textarea class="form-control " name="bio" id=" " rows="5"></textarea>
-                                        </div>
-                                        <hr>
+                                                                <div class="form-group ">
+                                                                    <label for=" ">Bio</label>
+                                                                    <textarea class="form-control " name="bio" id=" " rows="5"></textarea>
+                                                                </div>
+                                                                <hr>
 
-                                        <p class="col-12 text-left font-weight-bolder">Contact Information</p>
-                                        <div class="form-group "><label for=" ">Email address</label><input type="text " class="form-control " name="emailAddress"></div>
-                                        <div class="form-group "><label for=" ">Phone number</label><input type="text " class="form-control " name="phoneNumber"></div>
-                                        <p class="text-left text-black-50 pwsd_text">Password will be generated automatically, and sent over email.</p>
-                                        <hr>
+                                                                <p class="col-12 text-left font-weight-bolder">Contact Information</p>
+                                                                <div class="form-group "><label for=" ">Email address</label><input type="text " class="form-control " name="emailAddress"></div>
+                                                                <div class="form-group "><label for=" ">Phone number</label><input type="text " class="form-control " name="phoneNumber"></div>
+                                                                <p class="text-left text-black-50 pwsd_text">Password will be generated automatically, and sent over email.</p>
+                                                                <hr>
 
-                                        <div class="form-group">
-                                            <p class="text-left font-weight-bolder">Upload a photo ID</p>
-                                            <input class="form-control" type="file" name="profile_photo" id="uploader">
-                                        </div>
+                                                                <div class="form-group">
+                                                                    <p class="text-left font-weight-bolder">Upload a photo ID</p>
+                                                                    <input class="form-control" type="file" name="profile_photo" id="uploader">
+                                                                </div>
 
-                                        <input type="hidden" name="formType" value="homieOrHandler">
+                                                                <input type="hidden" name="formType" value="homieOrHandler">
 
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-outline-dark btn-block" value="Submit">
-                                        </div>
-                                    </form>
-                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="submit" class="btn btn-outline-dark btn-block" value="Submit">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        <%- include('./partials/footer'); -%>
+            <%- include('./partials/footer'); -%>

@@ -19,6 +19,8 @@ let sess = null;
 exports.getAllUsers = (req, res) => {
     sess = req.session;
     users.find().then(docs => {
+        console.log(docs);
+        
         res.render(__dirname + './../views/allusers.views.ejs', { list: docs, emailAdd: sess.useremail });
     }).catch(err => {
         res.json({ error: err });

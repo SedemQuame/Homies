@@ -18,6 +18,8 @@ module.exports = app => {
     // signup route
     app.route('/signup').post(user.createUser);
 
+    app.route('/homieSignup').post(user.createHomie);
+
     // login route
     app.route('/login').post(user.login);
 
