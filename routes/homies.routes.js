@@ -14,6 +14,12 @@ module.exports = app => {
     app.route('/homieStoryUpdate')
         .post(homiesStory.addHomieStory);
 
+    app.route('/only_homies')
+        .get(homies.getOnlyHomies);
+
+    app.route('/only_handlers')
+        .get(homies.getOnlyHandlers);
+
     // app.route('')
     //     .get(homies.createNewHomieInfo);
 

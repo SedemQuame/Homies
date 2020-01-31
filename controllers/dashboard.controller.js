@@ -19,11 +19,11 @@ let sess = null;
 exports.getAllUsers = (req, res) => {
     sess = req.session;
     users.find().then(docs => {
-        console.log(docs);
-        
+        // console.log(docs);
         res.render(__dirname + './../views/allusers.views.ejs', { list: docs, emailAdd: sess.useremail });
     }).catch(err => {
-        res.json({ error: err });
+        // res.json({ error: err });
+        res.render(__dirname + './../views/allusers.views.ejs', { list: [], emailAdd: sess.useremail });
     });
 };
 
@@ -33,7 +33,8 @@ exports.getSingleUser = (req, res) => {
             res.render(__dirname + './../views/homeless.views.ejs', { data: docs, colls: com, user_id: req.params.user_id });
         });
     }).catch(err => {
-        res.json({ error: err });
+        // res.json({ error: err });
+        res.render(__dirname + './../views/homeless.views.ejs', { data: docs, colls: null, user_id: req.params.user_id });
     });
 };
 

@@ -1,37 +1,42 @@
 <%- include('./partials/header.ejs');-%>
     <%- include('./partials/nav.ejs');-%>
         <!-- signup portion -->
-
-
         <div class="container">
             <div class="row">
-
                 <nav class="col-12" ria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Homies</a></li>
-                        <li class="breadcrumb-item"><a href="#">Handlers</a></li>
+                        <li class="breadcrumb-item"><a href="/only_homies">Homies</a></li>
+                        <li class="breadcrumb-item"><a href="/only_handlers">Handlers</a></li>
                     </ol>
                 </nav>
-
-                <%for(let i=0; i < list.length; i++) {%>
-                    <% if(list[i].user_type != "NGO" && list[i].user_type != "Individual"){ %>
-                        <div class="col-12 col-md-4 col-lg-3">
-                            <div class="card">
-                                <img class="all-users-img" src="<%- list[i].profile_photo %>" class="card-img-top avatar_img" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <%- list[i].name %>
-                                            <span class="float-right"><%- list[i].user_type %></span>
-                                    </h5>
-                                    <p class="card-text">
-                                        <%-  list[i].residence %>
-                                    </p>
-                                    <a href="/get_user/<%- list[i]._id %>" class="btn btn-outline-dark btn-block">View Profile</a>
-                                </div>
-                            </div>
+                <%if(list.length >= 1){%>
+                    <div class="col-12">
+                        <div class="container jumbotron text-center congratulatory-msg">
+                            Seems you are the first registered, user on the system.
+                            <br> Cheers 🍖🍖🍻🍻
                         </div>
-                        <% } %>
-                            <% } %>
+                    </div>
+                    <%}else{%>
+                        <%for(let i=0; i < list.length; i++) {%>
+                            <% if(list[i].user_type != "NGO" && list[i].user_type != "Individual"){ %>
+                                <div class="col-12 col-md-4 col-lg-3">
+                                    <div class="card">
+                                        <img class="all-users-img" src="<%- list[i].profile_photo %>" class="card-img-top avatar_img" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%- list[i].name %>
+                                                    <span class="float-right"><%- list[i].user_type %></span>
+                                            </h5>
+                                            <p class="card-text">
+                                                <%-  list[i].residence %>
+                                            </p>
+                                            <a href="/get_user/<%- list[i]._id %>" class="btn btn-outline-dark btn-block">View Profile</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <% } %>
+                                        <%}%>
             </div>
         </div>
 

@@ -3,3 +3,5 @@
 .procfile
 /config
 /public/img
+.DS_Store
+npm-debug.log

@@ -33,7 +33,7 @@ exports.updateHomieInfo = (req, res) => {
     // users.findByIdAndUpdate(id, update, () => {
     //     // redirect to homie information page
     // });
-    users.findOneAndUpdate({})
+    users.findOneAndUpdate({});
 };
 
 exports.createNewHomieInfo = (req, res) => {
@@ -43,5 +43,21 @@ exports.createNewHomieInfo = (req, res) => {
 exports.deleteHomieInfoPermanently = (req, res) => {
     users.findByIdAndRemove(id, () => {
         // redirect to page with a message.
+    });
+};
+
+exports.getOnlyHomies = (req, res) => {
+    users.find({user_type: ''}).then(doc => {
+        res.render(__dirname + './../views/allusers.views.ejs', { list: docs, emailAdd: sess.useremail });
+    }).catch(err => {
+        res.render(__dirname + './../views/allusers.views.ejs', { list: null, emailAdd: sess.useremail });
+    });
+};
+
+exports.getOnlyHandlers = (req, res) => {
+    users.find({user_type: ''}).then(doc => {
+        res.render(__dirname + './../views/allusers.views.ejs', { list: docs, emailAdd: sess.useremail });
+    }).catch(err => {
+        res.render(__dirname + './../views/allusers.views.ejs', { list: null, emailAdd: sess.useremail });
     });
 };

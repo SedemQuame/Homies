@@ -173,6 +173,12 @@ textarea {
     padding-left: 0;
 }
 
+.congratulatory-msg {
+    height: 75vh;
+    font-size: 24px;
+    padding: 30vh;
+}
+
 #poster {
     max-height: 55vh;
     border: 1px solid #d3d3d3;

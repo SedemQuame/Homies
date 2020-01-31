@@ -21,7 +21,7 @@
         "hackathon",
         "devCongress"
     ],
-    "author": "Sedem Quame Amekpewu, Oliver Otchere, Japheth Adjetey",
+    "author": "Sedem Quame Amekpewu",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/SedemQuame/Dev-Hackathon/issues"
@@ -47,6 +47,6 @@
         "passport-local-mongoose": "^5.0.1"
     },
     "engines": {
-        "node": "12.x"
+        "node": "10.x"
     }
 }
