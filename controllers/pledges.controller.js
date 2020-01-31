@@ -18,8 +18,10 @@ exports.getAllPledges = (req, res) => {
 };
 
 exports.createPledge = (req, res) => {  
+    console.log(req.body);
+    
     pledge.create({
-        beneficiaryId: null, //take user details provided by routes
+        beneficiaryId: req.body.beneficiaryId, //take user details provided by routes
         benefactorId: req.body.benefactorId,
         pledgeType: req.body.pledgeType,
         pledge: req.body.pledge,
@@ -27,12 +29,9 @@ exports.createPledge = (req, res) => {
         dateForFulfillment: req.body.fulfillmentDate
     }).then(() => {
         console.log('adding users pledge to database');
-        res.send({msg: `pledge added to database successfully`});
-
-        // todo: route back to, the same page.
-        
+        res.redirect('/get_all_users');
     }).catch((err) => {
         console.log('pledge not added to database');
-        res.send({msg: `pledge not added to database`});
+        res.redirect('/get_all_users', {msg: `Pledge not added, please wait an try again.`});
     });
 };

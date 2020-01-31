@@ -4,8 +4,11 @@ body {
     background: #fff;
 }
 
-h1,
-h2,
+h1 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 17px;
+}
+
 h2 {
     font-family: 'Rubik', sans-serif;
     font-size: 15px;
@@ -20,12 +23,12 @@ div,
 p,
 td {
     font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
+    font-size: 12px;
     padding: 0;
 }
 
 nav {
-    height: 8vh;
+    height: 9vh;
 }
 
 
@@ -128,7 +131,10 @@ nav {
 }
 
 .login_or_sign_container {
-    margin-top: 7%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background-color: #fff;
+    border-radius: 2px;
 }
 
 .dashboardIcons {
@@ -186,4 +192,21 @@ textarea {
     border-radius: 5px;
     overflow-y: auto;
     padding: 1%;
+}
+
+.registration-page {
+    background-image: url('https://images.pexels.com/photos/1657935/pexels-photo-1657935.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* min-height: 100vh; */
+    max-width: 100vw;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.about-img {
+    height: auto;
+    width: 100%;
+    margin-bottom: 2%;
 }

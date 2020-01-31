@@ -1,36 +1,41 @@
-<%- include('./partials/header.ejs');-%>
-    <%- include('./partials/nav.ejs');-%>
-        <!-- login portion -->
+<body class="registration-page">
+    <%- include('./partials/header.ejs');-%>
+        <%- include('./partials/form_nav.ejs');-%>
+            <!-- login portion -->
+            <div class="container">
+                <%if(errorMSG != null){%>
+                    <% if(errorMSG != `Logout successful.`) { %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= errorMSG %>
+                        </div>
+                        <% }else{ %>
+                            <div class="alert alert-success" role="alert">
+                                <%= errorMSG %>
+                            </div>
+                            <%}%>
+                                <%}%>
 
-        <div class="container">
-
-            <% if(errorMSG) { %>
-                <div class="alert alert-danger" role="alert">
-                    <%= errorMSG %>
-                </div>
-                <% } %>
-
-                    <div class="row" id="login_container">
-                        <div class="col-12 offset-md-3 col-md-6 offset-md-3 login_or_sign_container">
-                            <h1 class="text-center">Login</h1>
-                            <p class="text-center">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <!-- login forms -->
-                            <form action="/login" method="POST">
-                                <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="email_address"></div>
-                                <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password"></div>
-                                <div class="form-group"><input type="Submit" value="Submit" class="btn btn-outline-dark btn-block"></div>
-                            </form>
-                            <!-- show signup button -->
-                            <p class="text-center">
-                                <a class="" href="/user_signup">
+                                    <div class="row" id="login_container">
+                                        <div class="col-12 offset-md-7 col-md-5 offset-md-3 login_or_sign_container">
+                                            <h1 class="text-center">Login</h1>
+                                            <p class="text-center">
+                                                Login today and contribute to <br>improving the lives of <b>homies</b> around you,
+                                            </p>
+                                            <!-- login forms -->
+                                            <form action="/login" method="POST">
+                                                <div class="form-group"><label for="">Email address</label><input type="text" class="form-control" name="email_address"></div>
+                                                <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password"></div>
+                                                <div class="form-group"><input type="Submit" value="Submit" class="btn btn-outline-dark btn-block"></div>
+                                            </form>
+                                            <!-- show signup button -->
+                                            <p class="text-center">
+                                                <a class="" href="/user_signup">
                              Don't have an account? <br> Sign up
                         </a>
-                            </p>
-                        </div>
+                                            </p>
+                                        </div>
 
-                    </div>
+                                    </div>
 
-        </div>
-        <%- include('./partials/footer'); -%>
+            </div>
+            <%- include('./partials/footer'); -%>

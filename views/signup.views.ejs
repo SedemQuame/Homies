@@ -1,80 +1,82 @@
-<%- include('./partials/header.ejs');-%>
-    <%- include('./partials/nav.ejs');-%>
-        <!-- signup portion -->
-        <div class="container">
+<div class="registration-page">
+    <%- include('./partials/header.ejs');-%>
+        <%- include('./partials/form_nav.ejs');-%>
+            <!-- signup portion -->
+            <div class="container">
+                <% if(errorMSG != null) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= errorMSG %>
+                    </div>
+                    <% } %>
 
-            <% if(errorMSG != null) { %>
-                <div class="alert alert-danger" role="alert">
-                    <%= errorMSG %>
-                </div>
-                <% } %>
+                        <div class="row" id="signup_container">
+                            <div class="col-12 offset-md-7 col-md-5 offset-md-3 login_or_sign_container">
+                                <h1 class="text-center">Sign Up</h1>
+                                <p class="text-center">
+                                    Are you a <b>philanthropist, individual</b> or an <b>NGO</b>?
+                                    <br> Impact the lives of <b>homies</b> around you today.
+                                </p>
+                                <!-- sign up forms -->
+                                <form action="/signup" method="POST" enctype="multipart/form-data">
+                                    <p class="col-12 text-left font-weight-bolder">Personal Information</p>
+                                    <hr>
+                                    <div class="form-group"><label for="">Name</label><input type="text" class="form-control" name="name" required></div>
 
-                    <div class="row" id="signup_container">
-                        <div class="col-12 offset-md-3 col-md-6 offset-md-3 login_or_sign_container">
-                            <h1 class="text-center">Sign Up</h1>
-                            <p class="text-center">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <!-- sign up forms -->
-                            <form action="/signup" method="POST" enctype="multipart/form-data">
-                                <p class="col-12 text-left font-weight-bolder">Personal Information</p>
-                                <hr>
-                                <div class="form-group"><label for="">Name</label><input type="text" class="form-control" name="name" required></div>
-
-                                <div class="form-group"><label for="">User Type </label>
-                                    <select class="custom-select" name="userType">
+                                    <div class="form-group"><label for="">User Type </label>
+                                        <select class="custom-select" name="userType">
                                 <option selected>Choose...</option>
                                 <option value="Individual">Individual</option>
                                 <option value="NGO">NGO</option>
                               </select>
-                                </div>
-
-                                <div class="form-group"><label for="">Current Residence</label><input type="text" class="form-control" name="residence" required></div>
-
-                                <div class="form-group">
-                                    <label for="">Bio</label>
-                                    <textarea class="form-control" name="bio" id="" cols="20" rows="8"></textarea>
-                                </div>
-
-                                <p class="col-12 text-left font-weight-bolder">Contact Information</p>
-                                <hr>
-                                <div class="row">
-                                    <div class="form-group col-6"><label for="">Email address</label><input type="text" class="form-control" name="emailAddress"></div>
-                                    <div class="form-group col-6"><label for="">Phone number</label><input type="text" class="form-control" name="phoneNumber"></div>
-                                </div>
-
-                                <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password" required></div>
-                                <div class="form-group"><label for="">Confirm password</label><input type="password" class="form-control" required></div>
-
-                                <div class="form-group">
-                                    <p class=" text-left font-weight-bolder">Upload a photo ID or NGO logo</p>
-                                    <hr>
-                                    <input type="file" name="profile_photo" id="">
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" value="true">
-                                        <label class="custom-control-label" for="customCheck1">Keep me anonymous.</label>
                                     </div>
-                                    <p class="text-left text-black-50 pwsd_text">Your account information, will not be displayed, on the homepage.</p>
-                                </div>
 
-                                <div class="form-group">
-                                    <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
-                                </div>
+                                    <div class="form-group"><label for="">Current Residence</label><input type="text" class="form-control" name="residence" required></div>
 
-                            </form>
-                            <!-- show login button -->
-                            <p class="text-center">
-                                <a class="" href="/user_login">
+                                    <div class="form-group">
+                                        <label for="">Bio</label>
+                                        <textarea class="form-control" name="bio" id="" cols="20" rows="8"></textarea>
+                                    </div>
+
+                                    <p class="col-12 text-left font-weight-bolder">Contact Information</p>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="form-group col-6"><label for="">Email address</label><input type="text" class="form-control" name="emailAddress"></div>
+                                        <div class="form-group col-6"><label for="">Phone number</label><input type="text" class="form-control" name="phoneNumber"></div>
+                                    </div>
+
+                                    <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password" required></div>
+                                    <div class="form-group"><label for="">Confirm password</label><input type="password" class="form-control" required></div>
+
+                                    <div class="form-group">
+                                        <p class=" text-left font-weight-bolder">Upload a photo ID or NGO logo</p>
+                                        <hr>
+                                        <input type="file" name="profile_photo" id="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" value="true">
+                                            <label class="custom-control-label" for="customCheck1">Keep me anonymous.</label>
+                                        </div>
+                                        <p class="text-left text-black-50 pwsd_text">Your account information, will not be displayed, on the homepage.</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="Submit" value="Submit" class="btn btn-outline-dark btn-block">
+                                    </div>
+
+                                </form>
+                                <!-- show login button -->
+                                <p class="text-center">
+                                    <a class="" href="/user_login">
                                Already got an account? <br> Login
                         </a>
-                            </p>
+                                </p>
+                            </div>
+
                         </div>
 
-                    </div>
+            </div>
 
-        </div>
-
-        <%- include('./partials/footer'); -%>
+            <%- include('./partials/footer'); -%>
+</div>
